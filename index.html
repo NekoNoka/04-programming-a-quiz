@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>The Quiz</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+      <h1>Quiz</h1>
+    </header>
+    <div class="card">
+      <div class="main-area">
+        <h2 class="descriptions">This is a quiz for programmers learning web development.</h2>
+        <button class="start-btn" onclick="startQuiz()">Start Quiz!</button>
+        <button class="start-btn" onclick="showLeaderboards()">Check Leaderboards!</button>
+      </div>
+      <div class="quiz-container hidden">
+        <div class="mini-header">
+          <div class="score"></div>
+          <div class="timer"></div>
+        </div>
+        <h2 class="question-text"></h2>
+        <div class="options-container">
+          <button class="options" onclick="checkanswer(0)"></button>
+          <button class="options" onclick="checkanswer(1)"></button>
+          <button class="options" onclick="checkanswer(2)"></button>
+          <button class="options" onclick="checkanswer(3)"></button>
+        </div>
+      </div>
+      <div class="user-input hidden">
+        <h2 class="end-score"></h2>
+        <h3 class="end-score">You can put your initials here to save your score.</h3>
+        <input class="input-name" type="text" placeholder="Initials" minlength="2" maxlength="2"><br>
+        <button class="submit" onclick="saveScore()">submit & end</button>
+      </div>
+      <div class="scoreboard hidden">
+        <button class="return-btn" onclick="showMain()">Return</button>
+        <span>
+
+        </span>
+      </div>
+    </div>
+  </div>
+  <script src="questions.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
