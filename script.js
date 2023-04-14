@@ -8,7 +8,7 @@ let scoreboard = document.querySelector(".scoreboard");
 let leaderboard = document.querySelector(".scoreboard span");
 let timerdiv = document.querySelector(".timer");
 let endScoreDiv = document.querySelector(".end-score");
-let scorediv = document.querySelector(".score");
+let questiondiv = document.querySelector(".score");
 let allScores = localStorage.getItem("scores") === null ? {} : JSON.parse(localStorage.getItem("scores"));
 let currentQuestionId = 0;
 let currentWrong = false;
@@ -31,7 +31,7 @@ function startTimer() {
     timeLeft = totalTime;
     timerdiv.textContent = totalTime;
     intervalTimer = setInterval(() => {
-        if (timeLeft == 0) endQuiz();
+        if (timeLeft <= 0) endQuiz();
         timeLeft--;
         timerdiv.textContent = timeLeft;
     }, 1000);
@@ -40,7 +40,7 @@ function startTimer() {
 function nextQuestion() {
     if (currentQuestionId === questions.length) return endQuiz();
     questionText.textContent = questions[currentQuestionId].question;
-    scorediv.textContent = score;
+    questiondiv.textContent = score;
     for (let i = 0; i < 4; i++) {
         buttonText[i].classList.remove("wrong");
         buttonText[i].classList.remove("hidden");
@@ -101,9 +101,14 @@ function showLeaderboards() {
     scoreboard.classList.remove("hidden");
     userInput.classList.add("hidden");
     leaderboard.textContent = "";
+    let scoreList = [];
     for (let k in allScores) {
+        scoreList.push([allScores[k], k.toUpperCase()]);
+    }
+    scoreList.sort((a, b) => a[0] === b[0] ? 0 : (a[0] < b[0] ? 1 : -1));
+    for (let i = 0; i < scoreList.length; i++) {
         let e = document.createElement("div");
-        e.textContent = k.toUpperCase() + ": " + allScores[k];
+        e.textContent = scoreList[i][1] + ": " + scoreList[i][0];
         leaderboard.appendChild(e);
     }
 }
