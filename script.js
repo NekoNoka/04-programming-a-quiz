@@ -87,8 +87,9 @@ function showMain() {
 
 function saveScore() {
     if (inputName.value.length < 2) return showMain();
-    if (allScores[inputName.value.substring(0, 2)] == undefined || allScores[inputName.value.substring(0, 2)] > score) {
-        allScores[inputName.value.substring(0, 2)] = score;
+    let initials = inputName.value.substring(0, 2).toLowerCase();
+    if (allScores[initials] == undefined || allScores[inputName.value.substring(0, 2)] > score) {
+        allScores[initials] = score;
         localStorage.setItem("scores", JSON.stringify(allScores));
     }
     showMain();
