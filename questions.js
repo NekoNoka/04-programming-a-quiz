@@ -42,7 +42,7 @@ let questions = [
     {
         question: "Which calls a function in JavaScript?",
         options: [ "store();", "increment = 2;", "console.log;", "{ a:1, b:2 };"],
-        answer: 2
+        answer: 0
     },
     {
         question: "Which symbol is used to select the id of an element on the page",
