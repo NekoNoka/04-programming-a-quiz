@@ -47,6 +47,6 @@ let questions = [
     {
         question: "Which symbol is used to select the id of an element on the page",
         options: [ "*", "#", ".", "+"],
-        answer: 2
+        answer: 1
     }
 ]
